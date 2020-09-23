@@ -22,20 +22,18 @@ module.exports = {
         User.find({ email: req.body.email })
             .then(async resp => {
                 // Auth the user
-                console.log(resp);
-                const realPass = resp[0].password
-                const givenPass = req.body.password
-                console.log(`real: ${realPass} | given: ${givenPass}`);
+                // console.log("***************");
+                // console.log(resp[0]._id);
 
                 try {
                     if (await bcrypt.compare(req.body.password, resp[0].password)) {
-                        const accessToken = jwt.sign({ resp }, process.env.ACCESS_TOKEN_SECRET)
-                        // res.json({ accessToken: accessToken })
+                        const accessToken = jwt.sign({ id: resp[0]._id }, process.env.ACCESS_TOKEN_SECRET)
+                        // console.log(accessToken);
                         res.cookie("accessToken", accessToken, { httpOnly: true }).json({
                             msg: "Success",
                             id: resp[0]._id,
-                            accessToken: accessToken
                         })
+                        console.log(res.cookies);
                     } else {
                         res.send("Not Allowed")
                     }
@@ -47,6 +45,7 @@ module.exports = {
     },
     logout: (req, res) => {
         res.clearCookie('accessToken')
+        console.log("cookies cleared");
         res.sendStatus(200)
     },
     getAll: (req, res) => {
@@ -54,15 +53,29 @@ module.exports = {
             .then(data => res.json(data))
             .catch(err => console.log("getAll error: ", err))
     },
+    getUsersInRace: (req, res) => {
+        console.log(req.params);
+        User.find({ raceJoinCode: req.params.raceCode })
+            .then(data => {
+                console.log('race data:');
+                console.log(data);
+            })
+            .catch(err => console.log("getAll error: ", err))
+    },
     getOne: (req, res) => {
         User.find({ _id: req.params.id })
-            .then(data => res.json(data))
+            .then(resp => {
+                // TODO remove password from return
+                const { password, ...respCopy } = resp[0]
+                // console.log(respCopy);
+                res.json(respCopy)
+            })
             .catch(err => console.log("getOne error: ", err))
     },
     // U
     updateOne: (req, res) => {
         User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, useFindAndModify: false, runValidators: true })
-            .then(data => res.json(data))
+            .then(data => res.json({ msg: 'Successfully updated' }))
             .catch(err => {
                 console.log("updateOne error: ", err)
                 res.json(err)

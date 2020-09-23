@@ -11,9 +11,6 @@ mongoose.connect('mongodb://localhost/COACH', {
 
 module.exports = {
     authenticate(req, res, next) {
-        console.log("**************************************");
-        console.log(req.cookies);
-        console.log("**************************************");
         jwt.verify(req.cookies.accessToken, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
             if (err) {
                 res.status(401).json({ verified: false })

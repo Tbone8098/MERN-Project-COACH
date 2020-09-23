@@ -6,12 +6,13 @@ const { authenticate } = require('../config/mongoose.config')
 Users.post('/new', User.create)
 // R
 Users.post('/login', User.login)
-// Users.get('/auth', User.authenticateToken)
+Users.get('/logout', User.logout)
 Users.get('/', authenticate, User.getAll)
-Users.get('/:id', User.getOne)
+Users.get('/:id', authenticate, User.getOne)
+Users.get('/usersInRace/:raceCode', authenticate, User.getUsersInRace)
 // U
-Users.patch('/update/:id', User.updateOne)
+Users.patch('/update/:id', authenticate, User.updateOne)
 // D
-Users.delete('/delete/:id', User.deleteOne)
+Users.delete('/delete/:id', authenticate, User.deleteOne)
 
 module.exports = Users

@@ -1,27 +1,33 @@
+import { Link } from "@reach/router";
 import React from "react";
 
-export const Leaderboard = () => {
+export const Leaderboard = (props) => {
+    const { participants } = props;
     return (
         <div className="center">
             <div className="title">
-                <button>Expand</button>
                 <h2>Leaderboard</h2>
+                <Link to="/addEntry">
+                    <button>Add Entry</button>
+                </Link>
             </div>
             <div className="card-item">
                 <table>
                     <thead>
-                        <th>User</th>
-                        <th>Points</th>
+                        <tr>
+                            <th>User</th>
+                            <th>Points</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tyler</td>
-                            <td>10000</td>
-                        </tr>
-                        <tr>
-                            <td>Kendal</td>
-                            <td>20000</td>
-                        </tr>
+                        {console.log("****")}
+                        {console.log(typeof participants)}
+                        {participants.map((item) => (
+                            <tr>
+                                <td>{item.fname}</td>
+                                <td>{item.totalPoints}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

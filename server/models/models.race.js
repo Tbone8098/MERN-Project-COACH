@@ -14,12 +14,15 @@ const RaceSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    participants: [],
+    participants: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
     raceJoinCode: {
         type: String,
         required: true,
     }
-}, {timestamps: true})
+}, { timestamps: true })
 
 const Race = mongoose.model("Race", RaceSchema)
 

@@ -9,7 +9,7 @@ require('dotenv').config()
 require('./config/mongoose.config')
 
 // use the cors function
-app.unsubscribe(cookieParser())
+app.use(cookieParser())
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 app.use(express.json()) //Make sure that the .json has the ()!!

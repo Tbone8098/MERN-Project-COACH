@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import { UserForm } from "../UserForm";
 import { RaceForm } from "../RaceForm";
+import Axios from "axios";
+import { navigate } from "@reach/router";
+import HelperDelete from "../helper/HelperDelete";
 
-export const Settings = () => {
-    // const []
+export const Settings = (props) => {
     const clickHandler = (e) => {
         e.preventDefault();
-        if (e === "account") {
+        // if (e === "account") {
+        // }
+    };
+
+    const deleteAccountHandler = (e) => {
+        e.preventDefault();
+        if (window.confirm("Are you sure you want to delete this user")) {
+            HelperDelete("account");
         }
     };
 
@@ -15,12 +24,12 @@ export const Settings = () => {
             <h2>Settings</h2>
             <ul>
                 <li>
-                    <button onclick={() => clickHandler("account")}>
+                    <button onClick={() => clickHandler("account")}>
                         Account
                     </button>
                 </li>
                 <li>
-                    <button onclick={() => clickHandler("raceSettings")}>
+                    <button onClick={() => clickHandler("raceSettings")}>
                         Race Settings
                     </button>
                 </li>
@@ -28,6 +37,9 @@ export const Settings = () => {
             <div className="card-item">
                 <h2>Account Settings</h2>
                 <UserForm />
+                <button className="warning" onClick={deleteAccountHandler}>
+                    Delete Account
+                </button>
             </div>
             <div className="card-item">
                 <h2>Race Settings</h2>
