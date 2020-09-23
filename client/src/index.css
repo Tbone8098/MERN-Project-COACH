@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Dosis&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-dark: #555b6e;
+    --color-morning-blue: #89b0ae;
+    --color-powder-blue: #bee3db;
+    --color-cultured: #faf9f9;
+    --color-apricot: #ffd6ba;
+    --font-bold: "Anton", sans-serif;
+    --font-normal: "Dosis", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-normal);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+h1 {
+    font-family: var(--font-bold);
+    letter-spacing: 1px;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background: var(--color-dark);
+    box-shadow: 2px 2px 2px black;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav ul li:nth-of-type(1) {
+    margin-left: auto;
+}
+
+nav ul li:nth-of-type(4) {
+    margin-left: auto;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+}
+
+.center-content {
+    width: 75vw;
+}
+
+.card {
+    margin-top: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: var(--color-morning-blue);
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.card-item {
+    margin: 1rem;
+    min-width: 80%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: var(--color-apricot);
+    box-shadow: 2px 2px 7px black;
+}
+
+form span {
+    margin: 2rem;
+}
+
+form label {
+    margin-left: 10px;
+}
+
+fieldset {
+    border: 0;
+}
+
+button {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px black;
+    text-transform: uppercase;
+    outline: 0;
+}
+
+button:hover {
+    background: var(--color-dark);
+    color: var(--color-apricot);
+}
+
+.disBlock {
+    display: block;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+li {
+}
+
+.wth {
+    min-width: 75vw;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 90%;
+}
+.title button {
+    margin-left: 0;
+}
+
+.title h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* **************** */
+
+.bgDark {
+    background: var(--color-dark);
+}
+
+.bgMb {
+    background: var(--color-morning-blue);
+}
+
+.bgPb {
+    background: var(--color-powder-blue);
+}
+
+.bgCul {
+    background: var(--color-cultured);
+}
+
+.bgApr {
+    background: var(--color-apricot);
+}
+
+.colorDark {
+    color: var(--color-dark);
+}
+
+.colorMb {
+    color: var(--color-morning-blue);
+}
+
+.colorPb {
+    color: var(--color-powder-blue);
+}
+
+.colorCul {
+    color: var(--color-cultured);
+}
+
+.colorApr {
+    color: var(--color-apricot);
+}
+
+.hover-normal:hover {
+    background: var(--color-dark);
+    color: var(--color-apricot);
+}
