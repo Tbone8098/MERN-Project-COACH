@@ -1,16 +1,15 @@
 import React from "react";
-import { UserForm } from "../UserForm";
-import { Link, navigate } from "@reach/router";
-import axios from "axios";
 import { LoginForm } from "../LoginForm";
 import HelperLogin from "../helper/HelperLogin";
+import { LandingNavBar } from "../LandingNavBar";
 
 export const Landingpage = (props) => {
     const onReturn = (e) => {
-        HelperLogin(e)
+        HelperLogin(e);
     };
     return (
         <div>
+            <LandingNavBar />
             <h1>Landing page</h1>
             <LoginForm onSubmit={onReturn} />
         </div>

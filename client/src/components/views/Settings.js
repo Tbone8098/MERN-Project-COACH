@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { UserForm } from "../UserForm";
 import { RaceForm } from "../RaceForm";
-import Axios from "axios";
-import { navigate } from "@reach/router";
 import HelperDelete from "../helper/HelperDelete";
 
 export const Settings = (props) => {

@@ -1,3 +1,4 @@
+import { navigate } from "@reach/router";
 import Axios from "axios";
 
 function HelperDelete(scope) {
@@ -8,12 +9,14 @@ function HelperDelete(scope) {
     } else {
         // TODO add a remove from race
         console.log("not all");
+        removeUserFromRace();
     }
+    navigate("/");
 }
 
 function removeUserFromRace(userID) {
     // remove the user from the race
-    Axios.patch("http://localhost:8000/race/");
+    // Axios.patch("http://localhost:8000/race/");
 }
 
 function deleteUser(userID) {

@@ -7,7 +7,7 @@ const EntrySchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        eating: {
+        food: {
             type: String,
             required: true,
         },
@@ -19,6 +19,7 @@ const EntrySchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        entryPoints: Number,
     },
     { timestamps: true }
 );
@@ -68,6 +69,25 @@ const UserSchema = new mongoose.Schema(
             type: Number,
             default: 0,
         },
+        entry: [EntrySchema],
+        fitnessScale: {
+            exercise: {
+                type: Number,
+                default: 0,
+            },
+            food: {
+                type: Number,
+                default: 0,
+            },
+            water: {
+                type: Number,
+                default: 0,
+            },
+            sleep: {
+                type: Number,
+                default: 0,
+            },
+        },
     },
     { timestamps: true }
 );
@@ -93,7 +113,6 @@ UserSchema.pre("save", function (next) {
     });
 });
 
-// const
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;

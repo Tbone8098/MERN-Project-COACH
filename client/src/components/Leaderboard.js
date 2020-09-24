@@ -7,7 +7,7 @@ export const Leaderboard = (props) => {
         <div className="center">
             <div className="title">
                 <h2>Leaderboard</h2>
-                <Link to="/addEntry">
+                <Link to="/main/addEntry">
                     <button>Add Entry</button>
                 </Link>
             </div>
@@ -20,10 +20,8 @@ export const Leaderboard = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {console.log("****")}
-                        {console.log(typeof participants)}
-                        {participants.map((item) => (
-                            <tr>
+                        {participants.map((item, i) => (
+                            <tr key={i}>
                                 <td>{item.fname}</td>
                                 <td>{item.totalPoints}</td>
                             </tr>

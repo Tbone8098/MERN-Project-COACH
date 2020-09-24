@@ -41,7 +41,7 @@ export const JoinRace = (props) => {
                                 );
                             })
                             .then(() => {
-                                navigate("/dashboard");
+                                navigate("/main/dashboard");
                             })
                             .catch();
                     } else {

@@ -4,11 +4,7 @@ import { Link } from "@reach/router";
 export const LandingNavBar = () => {
     return (
         <nav className="navbar">
-            <h1>
-                <Link className="link colorApr" to="/dashboard">
-                    COACH
-                </Link>
-            </h1>
+            <h1 className="link colorApr">COACH</h1>
             <ul>
                 <li>
                     <Link className="link" to="/register">

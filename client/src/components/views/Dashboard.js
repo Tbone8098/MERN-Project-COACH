@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { navigate, Link } from "@reach/router";
-import { Navbar } from "../Navbar";
 import { Leaderboard } from "../Leaderboard";
 import { Store } from "../Store";
 import { Backpack } from "../Backpack";
@@ -21,6 +20,7 @@ export const Dashboard = (props) => {
             )
             .then((resp) => {
                 setUser(resp.data._doc);
+                props.onReturn(resp.data._doc);
             })
             .catch((err) => {
                 console.log(err);
@@ -28,6 +28,7 @@ export const Dashboard = (props) => {
             });
     }, []);
 
+    // Get all users in current race for Leaderboard
     useEffect(() => {
         if (user) {
             axios
@@ -53,7 +54,7 @@ export const Dashboard = (props) => {
                             <Leaderboard participants={raceParticipants} />
                         </div>
                         <div className="card">
-                            <History />
+                            <History userHistory={user.entry} />
                         </div>
                         <div className="card">
                             <Store />
@@ -64,7 +65,7 @@ export const Dashboard = (props) => {
                     </div>
                 ) : (
                     <div>
-                        <Link to="/joinRace">
+                        <Link to="/main/joinRace">
                             <button>Join a Race</button>
                         </Link>
                         <button>Start a Race</button>
